@@ -1,6 +1,8 @@
-module.exports = function objectDiff(o1, o2, curPath, diffs) {
-    diffs = diffs || [];
-  
+module.exports = function(o1, o2) {
+    return objectDiff(o1, o2, undefined, []);
+};
+
+function objectDiff(o1, o2, curPath, diffs) {
     if (typeof o1 !== typeof o2)
         return diffs.concat(curPath);
 

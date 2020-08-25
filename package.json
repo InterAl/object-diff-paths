@@ -1,6 +1,6 @@
 {
   "name": "object-diff-paths",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Calculates a diff of two objects, and returns the different object paths",
   "main": "index.js",
   "scripts": {

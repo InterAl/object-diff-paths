@@ -1,4 +1,6 @@
-module.exports = function objectDiff(o1, o2, curPath, diffs = []) {
+module.exports = function objectDiff(o1, o2, curPath, diffs) {
+    diffs = diffs || [];
+  
     if (typeof o1 !== typeof o2)
         return diffs.concat(curPath);
 
@@ -10,11 +12,12 @@ module.exports = function objectDiff(o1, o2, curPath, diffs = []) {
         return diffs;
     }
 
-    const keys = unionKeys(o1, o2);
+    var keys = unionKeys(o1, o2);
 
-    for (const key of keys) {
-        const isArr = Array.isArray(o1);
-        const path = curPath ? curPath + '.' + (isArr ? '[' : '') + key + (isArr ? ']' : '') : key;
+    for (var i = 0; i < keys.length; i++) {
+        var key = keys[i];
+        var isArr = Array.isArray(o1);
+        var path = curPath ? curPath + '.' + (isArr ? '[' : '') + key + (isArr ? ']' : '') : key;
         diffs = objectDiff(o1[key], o2[key], path, diffs);
     }
 
@@ -22,8 +25,8 @@ module.exports = function objectDiff(o1, o2, curPath, diffs = []) {
 };
 
 function unionKeys(o1, o2) {
-    const keys = getKeys(o1).concat(getKeys(o2));
-    const o = keys.reduce(function(acc, cur) {
+    var keys = getKeys(o1).concat(getKeys(o2));
+    var o = keys.reduce(function(acc, cur) {
         acc[cur] = true;
         return acc;
     }, {});

@@ -1,5 +1,6 @@
 const objectDiff = require('./index');
 const {assert} = require('chai');
+const _ = require('lodash');
 
 describe('object diff', () => {
     it('different types', () => {
@@ -108,5 +109,22 @@ describe('object diff', () => {
             'a.arr.[1].[0].one',
             'a.arr.[1].[0].two',
         ]);
+    });
+
+    it('lodash compatibility', () => {
+        const o1 = {
+            a: {
+                arr: [1,[{one: 1, two: 1}], {
+                    foo: 'bar'
+                }, 4]
+            }
+        };
+        const o2 = {...o1, a: {...o1.a, arr: [1, [{one: 42, two: 2}], {
+            foo: 'bar'
+        }, 4]}};
+
+        const diff = objectDiff(o1, o2);
+
+        assert.equal(_.get(o2, diff[0]), 42);
     });
 });

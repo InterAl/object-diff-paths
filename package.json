@@ -1,0 +1,15 @@
+{
+  "name": "object-diff-paths",
+  "version": "1.0.0",
+  "description": "Calculates a diff of two objects, and returns the different object paths",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha index.test.js"
+  },
+  "author": "InterAl",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^8.1.1"
+  }
+}

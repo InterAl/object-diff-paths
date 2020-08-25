@@ -2,7 +2,7 @@
 Calculates a diff of 2 objects, and returns a list of the different object
 paths.
 
-The object paths can be then used in lodash.get/lodash.set.
+The object paths can then be used in lodash.get/lodash.set.
 
 # Installation
 ```shell
